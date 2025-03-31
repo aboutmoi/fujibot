@@ -1,0 +1,14 @@
+{
+  "name": "botfuji",
+  "version": "1.0.0",
+  "description": "Bot Discord pour surveiller la disponibilité du Fujifilm X100VI",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0-rc.12"
+  }
+} 
