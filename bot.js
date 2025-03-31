@@ -25,7 +25,6 @@ async function verifierDisponibilite() {
         const response = await axios.get(URL_PRODUIT);
         const $ = cheerio.load(response.data);
         
-        // Recherche de l'élément spécifique indiquant la disponibilité
         // Pour les produits en stock, il y a un div avec la classe "stock available" et le texte "En stock"
         // Pour les produits en rupture, il y a un div avec la classe "stock unavailable" et le texte "En rupture"
         const stockElement = $('.product-info-stock-sku .stock');
@@ -36,7 +35,7 @@ async function verifierDisponibilite() {
         const heure = new Date().toLocaleTimeString();
         console.log(`[${heure}] Vérification effectuée - Statut: ${estDisponible ? 'Disponible' : 'Indisponible'} (${statusText})`);
         
-        // Envoyer toujours un message de statut dans le canal Discord
+        // Envoyer dispo dans le canal Discord
         const channel = await client.channels.fetch(CHANNEL_ID);
         if (channel) {
             await channel.send(`[${heure}] État du Fujifilm X100VI : ${estDisponible ? '✅ Disponible' : '❌ Indisponible'} (${statusText})`);
